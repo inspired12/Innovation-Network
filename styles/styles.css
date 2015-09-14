@@ -1,0 +1,177 @@
+
+circle.node {
+  cursor: pointer;
+  stroke-width: 2px;
+}
+
+line.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+text{
+    font-family:sans-serif;
+    font-weight:bolder;
+    cursor:pointer;
+    text-anchor:middle;
+
+}
+
+div.nav {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    margin-top: 1.4em;
+    cursor: pointer;
+}
+
+.nav div{
+    float:left;
+    color: white;
+    background: #fb8072;
+    display: block;
+    padding: 0.25em;
+    border-radius: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 0.25em;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+.nav div:hover{
+
+    background: #DD0000;
+}
+div.description {
+    display:none;
+    width: 225px;
+    position: absolute;
+    font-family: sans-serif;
+    padding: 1em;
+}
+
+img.profile {
+    display:none;
+    margin-bottom:1em;
+    float: left;
+    margin-right: 1.5em;
+    margin-top: 1em;
+    width:200px;
+}
+
+p.desc {
+    float: left;
+}
+
+p.desc {
+    height: 260px;
+    overflow: auto;
+    float: left;
+}
+
+h2 a {
+  color: hsl(0, 100%, 39%);
+}
+
+ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    float: left;
+    margin-right: 1em;
+    color: rgb(200, 0, 0);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu li a{
+    color: rgb(200, 0, 0);
+}
+.menu li a:hover{
+    color: rgb(200, 0, 0);
+    text-decoration:underline;
+}
+
+.navWrap{
+    /* background: hsl(196, 23%, 75%); */
+    background: #d9d9d9;
+    display: block;
+    height: 90px;
+    padding: 0;
+    margin: 0;
+    box-shadow:0 0 10px gray;
+    z-index: 1;
+    position: relative;
+    border-bottom:3px solid #fb8072;
+}
+
+.nav div {
+    float: right;
+}
+
+.nav .byNone{
+    margin-right: 40px;
+}
+.logo {
+    float: left;
+    width: 292px;
+}
+.logo h1 {
+  font-family:'Ubuntu Light', sans-serif;
+  padding-left: 1em;
+  position: absolute;
+color:white;
+}
+.logo img {
+    width: 100%;
+}
+body{
+    margin:0;
+}
+
+span.label {
+color: rgb(71, 71, 71);
+float: right;
+font-family: sans-serif;
+padding-top: 0.5em;
+margin-right: 1em;
+display:none;
+}
+
+input#search{
+  float:right;
+  margin-top: 5px;
+  margin-right: 10px;
+  padding:4px;
+  border-radius:10px;
+  border:none;
+  display:none;
+}
+
+
+@media (max-width: 900px) {
+    div.nav{
+      margin-top: 3em;
+    }
+    .logo h1 {
+      padding-top:0;
+      margin-top:0;
+    }
+}
+
+@media (min-width: 1200px) {
+    input#search{
+        display:block;
+    }
+    span.label {
+        display:block;
+    }
+}
+

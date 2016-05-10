@@ -6,6 +6,7 @@
             link;
 
         var categories = []; 
+        var countries = []; 
 
         var force = d3.layout.force();
 
@@ -24,7 +25,7 @@
                 .transition()
                 .duration(200)
                 .style('opacity', function () {
-                  return (this === nodeUnderMouse) ? 1.0 : 0.3;
+                  return (this === nodeUnderMouse) ? 1.0 : 0.5;
                 });
             })
             .on('mouseout', function(d){
@@ -35,7 +36,8 @@
             })
             .on('click', function(d,e){
                   //  offsetX = 400;
-                    console.log(d);
+                    //alert(d.name+"\n"+d.val+"\n"+d.joined+"\n"+d.country+"\n"+d.category+"\n"+d.investors);
+                    alert(d.name+" is a company from "+d.country+" valued at "+d.val+" billion dollars, and working on "+d.category+".\nIt raised it's first billion on "+d.joined+" through "+d.investors+".\n It is number "+(nodes.indexOf(d)+1)+" of 161");
               });
 
           node = gnode.append("circle")
@@ -46,25 +48,13 @@
               .style("fill", function(d){  return "#999999"  }).style("opacity","0.75");
 
          var labels = gnode.append("text")
-          .attr("dx",function(d) { 
-                if(d.name.split(" ").length>1){ 
-              //    return  -d.name.length/2 * 1.5;
-                } 
-            })
-          .attr("dy",function(d) { 
-            if(d.name.split(" ").length>1){ 
-            } 
-              return "0"
-            })
           .attr("fill",function(d){ 
             return "white";   
           })
           .text(function(d) {
-            var label = "";
-            label = d.name;
-            return label;
+             return d.name;
             })
-          .attr("transform","translate(4,2) rotate(-10)");
+          .attr("transform","translate(4,2) rotate(-5)");
 
           vis.selectAll('g text').each(insertLinebreaks);
 
@@ -94,8 +84,29 @@
         function getCenter(d){
 
                 var cols = 6;
-                var index = categories.indexOf(d.category);
-                var center = {x: 120+ 250 * (index%cols) ,y:200 + 100* (index/cols)};
+                var indexCat = categories.indexOf(d.category);
+                var indexCoun = countries.indexOf(d.country);
+                var center ;
+
+
+                switch (layout){
+/*
+                    case "0":
+                        cols = 10;
+                        center = {x:100+ 150 * (d.index%cols) ,y:100 + 50* (d.index/cols)};
+                    break;
+*/
+                    case "1":
+                        //center = {x:100+ 150 * (d.index%cols) ,y:100 + 50* (d.index/cols)};
+                        center = {x: 150+ 250 * (indexCoun%cols) ,y:300 + 100* (indexCoun/cols)};
+                    break;
+                    case "2":
+                        center = {x: 150+ 250 * (indexCat%cols) ,y:300 + 100* (indexCat/cols)};
+                    break;
+                    default:
+                        center = {x:w/4 + Math.sin(d.index)*(200*(d.index/150)),y:h/2+ Math.cos(d.index)*(200*(d.index/150))};
+                    break;
+                }
                 return center;
 
         }
@@ -104,14 +115,7 @@
           return function(d) {
 
                 var cols = 10;
-                var center = {x:w/2,y:h/2};
- //             var center = {x:w/2 + Math.sin(d.index)*200,y:h/2+ Math.cos(d.index)*200,};
-
-                if(!bool){
-                        center = getCenter(d);
-                }else{
-                        center = {x:100+ 150 * (d.index%cols) ,y:100 + 50* (d.index/cols)};
-                }
+                var center = getCenter(d);
 
                 d.y += ((center.y) - d.y) * 0.4 * alpha;
                 d.x += (center.x + offsetX - d.x) * 0.4 * alpha;
@@ -130,30 +134,22 @@
         }
 
 
-var bool = true;
+    var layout = 0;
 
     $(function(){
 
-    $("body").click(function(){
-        bool = !bool;
-if(bool){
-                          force.charge(function(d) { 
-                              return  -10;
-                           });
-}else{
+        $('input[name=materials]').on('change',function(){
+            layout = ($('input[name=materials]:checked').val());
+            force.start();
+        });
 
-                          force.charge(function(d) { 
-                              return parseInt(d.val.slice(1))*-100 ; 
-                           });
-}
-        force.start();
-    });
 
      Tabletop.init( { key: '1mj32f0CA_ExXaq066kfvWbNFwZq1n6SEk-t8_1o9gf8',
                        callback: function(data, tabletop) { 
 
                           nodes = data;
                           nodes.map(function(i,o){ if(categories.indexOf(i.category)==-1){ categories.push(i.category);} },categories);
+                          nodes.map(function(i,o){ if(countries.indexOf(i.country)==-1){ countries.push(i.country);} },countries);
 
                           force.nodes(nodes)
                           //.links(links)  //not active
@@ -163,7 +159,7 @@ if(bool){
                           .on("start", toggleLabels)
                           .on("end", onLabels)
                           .charge(function(d) { 
-                              return  -10;
+                              return parseInt(d.val.slice(1))*-100 ; 
                            });
 
                            update();

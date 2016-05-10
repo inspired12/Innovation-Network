@@ -1,3 +1,19 @@
 body{
-    background:#121212;
+    cursor:crosshair;
+}
+
+.drawer-header {
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 16px;
+    padding-top: 0px;
+    height: 151px; 
 }

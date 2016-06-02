@@ -14,6 +14,5 @@ body{
     -ms-flex-pack: end;
     justify-content: flex-end;
     padding: 16px;
-    padding-top: 0px;
-    height: 151px; 
+    padding-top: 2em;
 }

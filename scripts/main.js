@@ -48,7 +48,9 @@
             .on('click', function(d,e){
                   //  offsetX = 400;
                     //alert(d.name+"\n"+d.val+"\n"+d.joined+"\n"+d.country+"\n"+d.category+"\n"+d.investors);
-console.log(d);
+                    console.log(d);
+                    var nodeClicked = d3.select(this);
+                    nodeClicked.classed("selected", !nodeClicked.classed("selected"));
                     alert(d.name+" is a company from "+d.country+" valued at "+d.val+" billion dollars, and working on "+d.category+".\nIt raised it's first billion on "+d.joined+" through "+d.investors+".\n It is number "+(nodes.indexOf(d)+1)+" of 161");
               });
 
@@ -56,9 +58,7 @@ console.log(d);
               .attr("class", "node")
               .attr("cx", function(d) { return d.x; })
               .attr("cy", function(d) { return d.y; })
-              .attr("r", function(d) { return (d.val)? parseInt(d.val.slice(1))*2: 0; })
-              .style("fill", function(d){  return "rgba(0,0,0,0)"  })
-              .style("stroke", function(d){  return "rgba(200,200,200,0.85)"  });
+              .attr("r", function(d) { return (d.val)? parseInt(d.val.slice(1))*2: 0; });
 
          var nametag = gnode.append("text")
           .attr("class",function(d){ 

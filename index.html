@@ -14,7 +14,7 @@
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <meta name="apple-mobile-web-app-title" content="Networks Analyser">
     <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -83,6 +83,11 @@
     overflow-y: auto;
     z-index: 5;
 pointer-events:none;
+  font-family: 'Linson Raw';
+}
+
+.mdl-layout__drawer {
+    border-right:none;
 }
 
 
@@ -119,7 +124,7 @@ circle.node{
     <body>
 
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header has-drawer is-upgraded">
-	<header class="mdl-layout__header mdl-layout__header mdl-color--grey-300 mdl-color-text--grey-600 is-casting-shadow">
+	<header class="mdl-layout__header mdl-layout__header mdl-color--primary-contrast mdl-color-text--white is-casting-shadow">
 		<div class="mdl-layout__header-row">
              <span class="mdl-layout-title">Unicorns</span>
 <!--
@@ -153,7 +158,7 @@ circle.node{
 -->
         </div>
 	</header>
-  <div class="mdl-layout__drawer mdl-layout__drawr-static mdl-color--grey-300">
+  <div class="mdl-layout__drawer mdl-layout__drawr-static mdl-color--primary-contrast mdl-color-text--white">
         <header class="drawer-header">
           <div >
             <span class="mdl-layout-title">Innovation Map</span>
@@ -161,23 +166,23 @@ circle.node{
             <p>Explore 160 companies worth thousands of millions.</p>
             <p>Data provided by <a href="https://www.cbinsights.com/research-unicorn-companies" target="_blank">CB Insights</a> Visualization by <a href="http://intentive.info" target="_blank">intentive.info</a> </p>         </div>
         </header>
-    <nav class="mdl-navigation">
-        	<li class="mdl-list__item mdl-list__header">
+    <nav class="mdl-navigation  mdl-color--primary-contrast">
+        	<li class="mdl-list__item mdl-list__header mdl-color-text--white">
         		<span class="mdl-layout-subtitle">Layouts</span>
         	</li>
-        <li class="mdl-list__item">
+        <li class="mdl-list__item mdl-color-text--white">
         	<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="material-1">
         	  <input type="radio" id="material-1" class="mdl-radio__button" name="materials" value="0" >
         	  <span class="mdl-radio__label">Value</span>
         	</label>
         </li>
-        <li class="mdl-list__item">
+        <li class="mdl-list__item mdl-color-text--white">
         	<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="material-2">
         	  <input type="radio" id="material-2" class="mdl-radio__button" name="materials" value="1">
         	  <span class="mdl-radio__label">Country</span>
         	</label>
         </li>
-        <li class="mdl-list__item">
+        <li class="mdl-list__item mdl-color-text--white">
         	<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="material-3">
         	  <input type="radio" id="material-3" class="mdl-radio__button" name="materials" value="2">
         	  <span class="mdl-radio__label">Category</span>
@@ -219,8 +224,8 @@ circle.node{
 		<div class="mdl-grid">
 			<div id="main" class="mdl-cell mdl-cell--12-col mdl-grid ">
                 <div id="notifications" class="mdl-cell mdl-cell--4-col">
-                    <div id="note" class="note-card-square mdl-card mdl-shadow--2dp">
-                      <div class="mdl-card__supporting-text">
+                    <div id="note" class="note-card-square mdl-card mdl-shadow--2dp mdl-color--primary-contrast mdl-color-text--white ">
+                      <div class="mdl-card__supporting-text mdl-color--primary-contrast mdl-color-text--white">
                         <p id="info">
                         </p>
                       </div>

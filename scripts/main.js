@@ -122,8 +122,8 @@
                         center = (d.val)? {x:w/4 + Math.sin(d.index)*(200*(d.index/150)),y:h/2+ Math.cos(d.index)*(200*(d.index/150))}: {x:0,y:2000};
                     break;
                 }
-                return center;
 
+                    return (d.val)? center: {x:center.x,y:center.y-25};
         }
 
         function moveTowardCategoryCenter(alpha) {

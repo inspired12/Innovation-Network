@@ -51,7 +51,10 @@
                     console.log(d);
                     var nodeClicked = d3.select(this);
                     nodeClicked.classed("selected", !nodeClicked.classed("selected"));
-                    alert(d.name+" is a company from "+d.country+" valued at "+d.val+" billion dollars, and working on "+d.category+".\nIt raised it's first billion on "+d.joined+" through "+d.investors+".\n It is number "+(nodes.indexOf(d)+1)+" of 161");
+                    d3.select("#info").text(d.name+" is a company from "+d.country+" valued at "+d.val+" billion dollars, and working on "+d.category+".\nIt raised it's first billion on "+d.joined+" through "+d.investors+".\n It is number "+(nodes.indexOf(d)+1)+" of 161");
+
+                    d3.select("#note").classed("active",true);
+                    setTimeout(function(){ d3.select("#note").classed("active",false); } ,12000);
               });
 
           node = gnode.append("circle")

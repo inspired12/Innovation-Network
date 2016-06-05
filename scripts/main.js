@@ -25,13 +25,14 @@
                 .transition()
                 .duration(200)
                 .style('font-size',function(d){ return (d.val)?'16px':'18px' });
-
+/*
               vis.selectAll('.gnode')
                 .transition()
                 .duration(200)
                 .style('opacity', function () {
                   return (this === nodeUnderMouse) ? 1.0 : 0.5;
                 });
+*/
             })
             .on('mouseout', function(d){
               var nodeUnderMouse = this;
@@ -39,11 +40,12 @@
                 .transition()
                 .duration(200)
                 .style('font-size',function(d){ return (d.val)? '12px':'18px' });
-
+/*
               vis.selectAll('.gnode')
               .transition()
               .duration(200)
               .style({opacity:'1'});
+*/
             })
             .on('click', function(d,e){
                   //  offsetX = 400;
@@ -53,8 +55,8 @@
                     nodeClicked.classed("selected", !nodeClicked.classed("selected"));
                     d3.select("#info").text(d.name+" is a company from "+d.country+" valued at "+d.val+" billion dollars, and working on "+d.category+".\nIt raised it's first billion on "+d.joined+" through "+d.investors+".\n It is number "+(nodes.indexOf(d)+1)+" of 161");
 
-                    d3.select("#note").classed("active",true);
-                    setTimeout(function(){ d3.select("#note").classed("active",false); } ,12000);
+                    d3.select(".active").classed("active",false);
+                    setTimeout(function(){                    d3.select("#note").classed("active",true); }, 200);
               });
 
           node = gnode.append("circle")
